@@ -1,8 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-require("./two");
+var two_1 = require("./two");
+new two_1.Two();
 var App = /** @class */ (function () {
     function App() {
+        console.log("I'm working");
     }
     return App;
 }());
+new App();

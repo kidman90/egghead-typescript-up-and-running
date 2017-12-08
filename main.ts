@@ -1,5 +1,0 @@
-import "./two";
-
-class App {
-  
-}
