@@ -1,8 +1,11 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var App = /** @class */ (function () {
     function App() {
-        console.log("I'm working");
+        this.title = "Eggheads";
     }
+    App.prototype.getUsers = function () {
+        return [{ name: "John" }];
+    };
     return App;
 }());
-new App();

@@ -1,7 +1,9 @@
-class App {
-  constructor() {
-    console.log(`I'm working`);
+import { SocialNetwork } from './social-network';
+
+class App implements SocialNetwork {
+  title = "Eggheads";
+
+  getUsers() {
+    return [{ name: "John" }];
   }
 }
-
-new App();
