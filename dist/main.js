@@ -1,13 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = require("lodash");
-var App = /** @class */ (function () {
-    function App() {
+const _ = require("lodash");
+const Observable_1 = require("rxjs/Observable");
+require("rxjs/add/observable/timer");
+require("rxjs/add/observable/interval");
+Observable_1.Observable.interval(1000)
+    .subscribe(x => console.log(x));
+class App {
+    constructor() {
         this.title = "Eggheads";
     }
-    App.prototype.getUsers = function () {
+    getUsers() {
         return [{ name: "John" }];
-    };
-    return App;
-}());
+    }
+}
 console.log(_.isArray(new App().getUsers()));
