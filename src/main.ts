@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/observable/interval';
+import 'reflect-metadata';
 
 // Observable.interval(1000)
 //   .subscribe(x => console.log(x));
@@ -32,18 +33,38 @@ console.log(_.isArray(new App().getUsers()));
 
 // console.log(newPerson);
 
-function addAge(age:number) {
+// function addAge(age:number) {
+//   return function (targetClass:any) {
+//     return class {
+//       name = new targetClass().name;
+//       age = age;
+//     };
+//   };
+// }
+
+// @addAge(20)
+// class Person {
+//   name = "John";
+// }
+
+// console.log(new Person());
+
+function example() {
   return function (targetClass:any) {
-    return class {
-      name = new targetClass().name;
-      age = age;
-    };
+    const types = Reflect.getMetadata('design:paramtypes', targetClass);
+    console.log(types);
+    return targetClass;
   };
 }
 
-@addAge(20)
+@example()
 class Person {
-  name = "John";
+  constructor(name:string, age:number) { }
 }
 
-console.log(new Person());
+@example()
+class Cat {
+  constructor(lazy:boolean, hair:any) { }
+}
+
+new Person("John", 10);
